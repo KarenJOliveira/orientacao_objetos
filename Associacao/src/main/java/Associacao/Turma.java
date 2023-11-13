@@ -48,8 +48,8 @@ public class Turma {
         this.professor = professor;
     }
 
-    public ArrayList<String> listaNomeAlunos(){
-        ArrayList<String> nomeAlunos = new ArrayList<String>();
+    public ArrayList<String> getNomeAlunos(){
+        ArrayList<String> nomeAlunos = new ArrayList<>();
         for (Aluno aluno:this.alunos
              ) {
             nomeAlunos.add(aluno.getNome());
@@ -57,7 +57,28 @@ public class Turma {
         return nomeAlunos;
     }
 
-    public ArrayList<String> getNomeAlunos() {
-        return listaNomeAlunos();
+    public String getNomeProfessor() {
+        if (this.professor == null) {
+            return "Turma sem professor";
+        }
+        return this.professor.getNome();
     }
+
+    public String getNomeDisciplina(){
+        return this.disciplina.getNome();
+    }
+
+    public boolean verificaAlunoTurma(Aluno aluno){
+        return this.alunos.contains(aluno);
+    }
+
+    public boolean excluirAlunoTurma(Aluno aluno){
+        if(this.alunos.contains(aluno)){
+            alunos.remove(aluno);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
