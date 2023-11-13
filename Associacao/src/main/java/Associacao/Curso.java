@@ -107,4 +107,12 @@ public class Curso {
             return false;
         }
     }
+     public boolean excluiAlunoCurso(Aluno aluno){
+         if(this.alunos.contains(aluno)){
+             this.alunos.remove(aluno);
+             return true;
+         }else{
+             return false;
+         }
+     }
 }

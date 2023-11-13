@@ -31,10 +31,15 @@ class CursoTest {
         Turma turma4 = new Turma(disciplina);
         Turma turma5 = new Turma(disciplina);
 
-
         turma1.setProfessor(professor1);
         turma2.setProfessor(professor2);
         turma3.setProfessor(professor3);
+
+        curso.adicionaTurma(turma1);
+        curso.adicionaTurma(turma2);
+        curso.adicionaTurma(turma3);
+        curso.adicionaTurma(turma4);
+        curso.adicionaTurma(turma5);
 
         List<String> professores = Arrays.asList("Fulano","Ciclano","Beltrano");
         assertEquals(professores, curso.getNomesProfessores());
@@ -69,6 +74,12 @@ class CursoTest {
         curso.adicionaAluno(aluno4);
         curso.adicionaAluno(aluno5);
         curso.adicionaAluno(aluno6);
+
+        curso.adicionaTurma(turma1);
+        curso.adicionaTurma(turma2);
+        curso.adicionaTurma(turma3);
+        curso.adicionaTurma(turma4);
+        curso.adicionaTurma(turma5);
 
         List<String> alunos = Arrays.asList("Lorem","Ipsum","Dolor","Sit");
         assertEquals(alunos, curso.getNomesAlunosTurmas());
@@ -152,5 +163,18 @@ class CursoTest {
         assertFalse(curso.excluiTurmaCurso(turma));
     }
 
+    @Test
+    void deveRetornarVerdadeiroExcluiAluno(){
+        Aluno aluno = new Aluno("Lorem");
+        curso.adicionaAluno(aluno);
+
+        assertTrue(curso.excluiAlunoCurso(aluno));
+    }
+    @Test
+    void deveRetornarFalseExcluiAluno(){
+        Aluno aluno = new Aluno("Lorem");
+
+        assertFalse(curso.excluiAlunoCurso(aluno));
+    }
 
 }
